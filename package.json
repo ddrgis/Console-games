@@ -1,0 +1,19 @@
+{
+  "name": "my-minigame-011235",
+  "version": "1.0.0",
+  "description": "project-lvl1-s212",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddrgis/project-lvl1-s212.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ddrgis/project-lvl1-s212/issues"
+  },
+  "homepage": "https://github.com/ddrgis/project-lvl1-s212#readme"
+}
