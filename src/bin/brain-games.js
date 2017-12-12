@@ -1,4 +1,4 @@
 #!/usr/bin/nodejs
-import {greet} from '..';
+import { greet } from '..';
 
 greet();
