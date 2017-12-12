@@ -1,6 +1,6 @@
 {
   "name": "my-minigame-011235",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "project-lvl1-s212",
   "main": "index.js",
   "bin": {
@@ -27,5 +27,6 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1"
-  }
+  },
+  "dependencies": {}
 }
