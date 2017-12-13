@@ -1,4 +1,5 @@
 #!/usr/bin/nodejs
-import { greet } from '..';
+import { welcome, askName } from '../brain-even-game';
 
-greet();
+welcome();
+console.log(askName());
