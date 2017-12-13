@@ -23,7 +23,7 @@ const congrats = (name) => {
   console.log(`Congratulations, ${name}!`);
 };
 
-export const startGame = (getRules, getQuestion, checkAnswer) => {
+export const startGame = (getRules, createQuestion, checkAnswer) => {
   console.log('Hello from Engine');
   // imp..
 };
