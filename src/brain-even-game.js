@@ -1,5 +1,5 @@
-import { cons, cdr } from 'hexlet-pairs';
-import { getRandomInt } from './prng';
+import { cons, car, cdr } from 'hexlet-pairs';
+import getRandomInt from './prng';
 
 const MIN_NUMBER = 0;
 const MAX_NUMBER = 100;
@@ -13,15 +13,18 @@ const getRightAnswer = num => isEven(num);
 export const createQuestion = () => {
   const question = getRandomInt(MIN_NUMBER, MAX_NUMBER);
   const rightAnswer = getRightAnswer(question);
-  console.log(`Question: ${question}`);
   return cons(question, rightAnswer);
 };
 
-export const checkAnswer = (question, answer) => {
-  if (cdr(question) === answer) {
-    return cons(true, answer);
+export const printQuestion = (question) => {
+  console.log(car(question));
+};
+
+export const getResult = (question, playerAnswer) => {
+  if (cdr(question) === playerAnswer) {
+    return cons(true, playerAnswer);
   }
 
-  return cons(false, answer);
+  return cons(false, playerAnswer);
 };
 
