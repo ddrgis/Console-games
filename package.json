@@ -2,7 +2,6 @@
   "name": "my-minigame-011235",
   "version": "1.0.4",
   "description": "project-lvl1-s212",
-  "main": "index.js",
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
     "brain-even": "bin/brain-even.js"
