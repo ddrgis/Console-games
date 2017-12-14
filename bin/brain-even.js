@@ -1,4 +1,4 @@
-import { getRules, createQuestion, getResult } from '../src/brain-even-game';
+import { getRules, createRiddle, getResult } from '../src/brain-even-game';
 import { startGame } from '../src/engine';
 
-startGame(getRules, createQuestion, getResult);
+startGame(getRules, createRiddle, getResult);

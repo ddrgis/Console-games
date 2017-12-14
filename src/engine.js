@@ -4,14 +4,13 @@ import { car, cdr } from 'hexlet-pairs';
 export const welcome = () => console.log('Welcome to the Brain Games!');
 export const askName = () => readlineSync.question('May I have your name? ');
 
+const askAnswer = () => readlineSync.question('Your answer: ');
 const greet = (name) => {
   console.log(`Hello, ${name}!`);
 };
-
 const printCorrect = () => {
   console.log('Correct!');
 };
-
 const printWrong = (playerName, playerAnswer, correctAnswer) => {
   const printTryAgain = (name) => {
     console.log(`Let's try again, ${name}!`);
@@ -19,18 +18,15 @@ const printWrong = (playerName, playerAnswer, correctAnswer) => {
   console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
   printTryAgain();
 };
-
 const congrats = (name) => {
   console.log(`Congratulations, ${name}!`);
 };
-
-const printQuestion = (question) => {
-  console.log(car(question));
+const printRiddle = (riddle) => {
+  console.log(car(riddle));
 };
 
-const askAnswer = () => readlineSync.question('Your answer: ');
 
-export const startGame = (getRules, createQuestion, getResult) => {
+export const startGame = (getRules, createRiddle, getResult) => {
   welcome();
   console.log(`${getRules()}\n`);
   const playerName = askName();
@@ -38,16 +34,15 @@ export const startGame = (getRules, createQuestion, getResult) => {
 
   let rightAnswersCounter = 0;
   while (rightAnswersCounter < 3) {
-    const question = createQuestion();
-    printQuestion(question);
+    const riddle = createRiddle();
+    printRiddle(riddle);
     const playerAnswer = askAnswer();
-
-    const result = getResult(question, playerAnswer);
+    const result = getResult(riddle, playerAnswer);
     if (car(result)) {
       rightAnswersCounter += 1;
       printCorrect();
     } else {
-      printWrong(playerName, playerAnswer, cdr(question));
+      printWrong(playerName, playerAnswer, cdr(riddle));
     }
     console.log();
   }
