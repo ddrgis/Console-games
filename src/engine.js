@@ -28,7 +28,7 @@ const printQuestion = (question) => {
   console.log(car(question));
 };
 
-const getAnswer = () => readlineSync.question('Your answer: ');
+const askAnswer = () => readlineSync.question('Your answer: ');
 
 export const startGame = (getRules, createQuestion, getResult) => {
   welcome();
@@ -40,15 +40,16 @@ export const startGame = (getRules, createQuestion, getResult) => {
   while (rightAnswersCounter < 3) {
     const question = createQuestion();
     printQuestion(question);
-    const playerAnswer = getAnswer();
+    const playerAnswer = askAnswer();
 
     const result = getResult(question, playerAnswer);
-    if (car(result) === true) {
+    if (car(result)) {
       rightAnswersCounter += 1;
       printCorrect();
     } else {
       printWrong(playerName, playerAnswer, cdr(question));
     }
+    console.log();
   }
   congrats(playerName);
 };

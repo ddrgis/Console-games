@@ -8,7 +8,7 @@ export const getRules = () => 'Answer "yes" if number even otherwise answer "no"
 
 const isEven = answer => answer % 2 === 0;
 
-const getRightAnswer = num => isEven(num);
+const getRightAnswer = num => (isEven(num) ? 'yes' : 'no');
 
 export const createQuestion = () => {
   const question = getRandomInt(MIN_NUMBER, MAX_NUMBER);
@@ -24,7 +24,5 @@ export const getResult = (question, playerAnswer) => {
   if (cdr(question) === playerAnswer) {
     return cons(true, playerAnswer);
   }
-
   return cons(false, playerAnswer);
 };
-
