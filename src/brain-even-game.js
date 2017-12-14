@@ -1,5 +1,4 @@
-import { cons, car, cdr } from 'hexlet-pairs';
-
+import { createRiddle, rightAnswer } from './riddle';
 
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 100;
@@ -10,15 +9,11 @@ const isEven = answer => answer % 2 === 0;
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 const getRightAnswer = num => (isEven(num) ? 'yes' : 'no');
 
-export const createRiddle = () => {
+export const getRiddle = () => {
   const riddle = getRandomInt(MIN_NUMBER, MAX_NUMBER);
-  const rightAnswer = getRightAnswer(riddle);
-  return cons(riddle, rightAnswer);
+  const answer = getRightAnswer(riddle);
+  return createRiddle(riddle, answer);
 };
 
-export const printRiddle = (riddle) => {
-  console.log(car(riddle));
-};
-
-export const isRight = (riddle, playerAnswer) => cdr(riddle) === playerAnswer;
+export const isRight = (riddle, playerAnswer) => rightAnswer(riddle) === playerAnswer;
 

@@ -1,12 +1,12 @@
 import readlineSync from 'readline-sync';
-import { car, cdr } from 'hexlet-pairs';
+import { rightAnswer, printRiddle } from './riddle';
 
 export const welcome = () => console.log('Welcome to the Brain Games!');
 export const askName = () => readlineSync.question('May I have your name? ');
 
 const askAnswer = () => readlineSync.question('Your answer: ');
 const greet = (name) => {
-  console.log(`Hello, ${name}!`);
+  console.log(`Hello, ${name}!\n`);
 };
 const printCorrect = () => {
   console.log('Correct!');
@@ -21,26 +21,23 @@ const printWrong = (playerName, playerAnswer, correctAnswer) => {
 const congrats = (name) => {
   console.log(`Congratulations, ${name}!`);
 };
-const printRiddle = (riddle) => {
-  console.log(car(riddle));
-};
 
-export const startGame = (getRules, createRiddle, isRight) => {
+export const startGame = (getRules, getRiddle, isRight) => {
   welcome();
   console.log(`${getRules()}\n`);
   const playerName = askName();
-  greet(`${playerName}\n`);
+  greet(`${playerName}`);
 
   let rightAnswersCounter = 0;
   while (rightAnswersCounter < 3) {
-    const riddle = createRiddle();
+    const riddle = getRiddle();
     printRiddle(riddle);
     const playerAnswer = askAnswer();
     if (isRight(riddle, playerAnswer)) {
       rightAnswersCounter += 1;
       printCorrect();
     } else {
-      printWrong(playerName, playerAnswer, cdr(riddle));
+      printWrong(playerName, playerAnswer, rightAnswer(riddle));
     }
     console.log();
   }
