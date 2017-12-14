@@ -25,8 +25,7 @@ const printRiddle = (riddle) => {
   console.log(car(riddle));
 };
 
-
-export const startGame = (getRules, createRiddle, getResult) => {
+export const startGame = (getRules, createRiddle, isRight) => {
   welcome();
   console.log(`${getRules()}\n`);
   const playerName = askName();
@@ -37,8 +36,7 @@ export const startGame = (getRules, createRiddle, getResult) => {
     const riddle = createRiddle();
     printRiddle(riddle);
     const playerAnswer = askAnswer();
-    const result = getResult(riddle, playerAnswer);
-    if (car(result)) {
+    if (isRight(riddle, playerAnswer)) {
       rightAnswersCounter += 1;
       printCorrect();
     } else {

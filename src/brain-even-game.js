@@ -1,5 +1,6 @@
 import { cons, car, cdr } from 'hexlet-pairs';
 
+
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 100;
 
@@ -19,10 +20,5 @@ export const printRiddle = (riddle) => {
   console.log(car(riddle));
 };
 
-export const getResult = (riddle, playerAnswer) => {
-  if (cdr(riddle) === playerAnswer) {
-    return cons(true, playerAnswer);
-  }
-  return cons(false, playerAnswer);
-};
+export const isRight = (riddle, playerAnswer) => cdr(riddle) === playerAnswer;
 
