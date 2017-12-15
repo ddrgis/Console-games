@@ -4,7 +4,64 @@ import getRandomInt from '../prng';
 const MIN_NUMBER = 10;
 const MAX_NUMBER = 9999;
 
-const balanceNumber = num => num;
+const balanceNumber = (num) => {
+  const sort = n => n.toString().split('').sort().join('');
+  const isDiffBiggerThenOne =
+    (strNum1, strNum2) => Math.abs(parseInt(strNum1, 10) - parseInt(strNum2, 10)) > 1;
+  const isBalanced = (stringNum) => {
+    for (let i = 0; i < stringNum.length; i += 1) {
+      for (let j = 0; j < stringNum.length; j += 1) {
+        if (isDiffBiggerThenOne(stringNum[i], stringNum[j])) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+  const swapUnits = (str, minIndex, maxIndex) => {
+    let result = '';
+    for (let i = 0; i < str.length; i += 1) {
+      switch (i) {
+        case minIndex:
+          result += parseInt(str[maxIndex], 10) - 1;
+          break;
+        case maxIndex:
+          result += parseInt(str[minIndex], 10) + 1;
+          break;
+        default:
+          result += str[i];
+      }
+    }
+    return result;
+  };
+
+  const balance = (stringNum) => {
+    if (isBalanced(stringNum)) {
+      return stringNum;
+    }
+
+    let minIndex = 0;
+    let maxIndex = 0;
+
+    for (let i = 1; i < stringNum.length; i += 1) {
+      if (stringNum[i] < stringNum[minIndex]) {
+        minIndex = i;
+      }
+      if (stringNum[i] > stringNum[maxIndex]) {
+        maxIndex = i;
+      }
+    }
+
+    const min = stringNum[minIndex];
+    const max = stringNum[maxIndex];
+
+    if (isDiffBiggerThenOne(min, max)) {
+      return balance(swapUnits(stringNum, minIndex, maxIndex));
+    }
+    return stringNum;
+  };
+  return sort(balance(num.toString()));
+};
 
 const getQuestion = num => `${num}`;
 const getRightAnswer = num => balanceNumber(num);
@@ -17,5 +74,5 @@ export const getRiddle = () => {
   return createRiddle(question, correctAnswer);
 };
 
-export const isRight = (riddle, playerAnswer) => rightAnswer(riddle) === parseInt(playerAnswer, 10);
+export const isRight = (riddle, playerAnswer) => rightAnswer(riddle) === playerAnswer;
 
