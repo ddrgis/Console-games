@@ -1,4 +1,4 @@
-import { createRiddle, rightAnswer } from './riddle';
+import { createRiddle, rightAnswer } from '../riddle';
 
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 100;
