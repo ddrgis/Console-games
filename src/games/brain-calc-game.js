@@ -26,7 +26,7 @@ const multiplication = (op1, op2) => {
 };
 
 const getOperator = () => {
-  const operatorNumber = getRandomInt(0, 2);
+  const operatorNumber = getRandomInt(0, 3);
   switch (operatorNumber) {
     case 0:
       return plus;

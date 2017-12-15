@@ -1,6 +1,6 @@
 {
   "name": "my-minigame-011235",
-  "version": "1.0.12",
+  "version": "1.0.14",
   "description": "project-lvl1-s212",
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
