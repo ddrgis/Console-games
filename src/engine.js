@@ -16,7 +16,7 @@ const printWrong = (playerName, playerAnswer, correctAnswer) => {
     console.log(`Let's try again, ${name}!`);
   };
   console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
-  printTryAgain();
+  printTryAgain(playerName);
 };
 const congrats = (name) => {
   console.log(`Congratulations, ${name}!`);
@@ -27,6 +27,7 @@ export const startGame = (getRules, getRiddle) => {
   welcome();
   console.log(`${getRules()}\n`);
   const playerName = askName();
+  console.log(playerName);
   greet(`${playerName}`);
 
   let rightAnswersCounter = 0;
