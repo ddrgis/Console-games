@@ -5,20 +5,23 @@ import { startGame } from '../engine';
 const MIN_NUMBER = 10;
 const MAX_NUMBER = 9999;
 
-const balanceNumber = (num) => {
-  const sort = n => n.toString().split('').sort().join('');
-  const isDiffBiggerThenOne =
-    (strNum1, strNum2) => Math.abs(parseInt(strNum1, 10) - parseInt(strNum2, 10)) > 1;
-  const isBalanced = (stringNum) => {
-    for (let i = 0; i < stringNum.length; i += 1) {
-      for (let j = 0; j < stringNum.length; j += 1) {
-        if (isDiffBiggerThenOne(stringNum[i], stringNum[j])) {
-          return false;
-        }
+const sort = n => n.toString().split('').sort().join('');
+
+const isDiffBiggerThenOne =
+  (strNum1, strNum2) => Math.abs(parseInt(strNum1, 10) - parseInt(strNum2, 10)) > 1;
+
+const isBalanced = (stringNum) => {
+  for (let i = 0; i < stringNum.length; i += 1) {
+    for (let j = 0; j < stringNum.length; j += 1) {
+      if (isDiffBiggerThenOne(stringNum[i], stringNum[j])) {
+        return false;
       }
     }
-    return true;
-  };
+  }
+  return true;
+};
+
+const balance = (stringNum) => {
   const swapUnits = (str, minIndex, maxIndex) => {
     let result = '';
     for (let i = 0; i < str.length; i += 1) {
@@ -36,40 +39,37 @@ const balanceNumber = (num) => {
     return result;
   };
 
-  const balance = (stringNum) => {
-    if (isBalanced(stringNum)) {
-      return stringNum;
+  if (isBalanced(stringNum)) {
+    return sort(stringNum);
+  }
+
+  let minIndex = 0;
+  let maxIndex = 0;
+
+  for (let i = 1; i < stringNum.length; i += 1) {
+    if (stringNum[i] < stringNum[minIndex]) {
+      minIndex = i;
     }
-
-    let minIndex = 0;
-    let maxIndex = 0;
-
-    for (let i = 1; i < stringNum.length; i += 1) {
-      if (stringNum[i] < stringNum[minIndex]) {
-        minIndex = i;
-      }
-      if (stringNum[i] > stringNum[maxIndex]) {
-        maxIndex = i;
-      }
+    if (stringNum[i] > stringNum[maxIndex]) {
+      maxIndex = i;
     }
+  }
 
-    const min = stringNum[minIndex];
-    const max = stringNum[maxIndex];
+  const min = stringNum[minIndex];
+  const max = stringNum[maxIndex];
 
-    if (isDiffBiggerThenOne(min, max)) {
-      return balance(swapUnits(stringNum, minIndex, maxIndex));
-    }
-    return stringNum;
-  };
-  return sort(balance(num.toString()));
+  if (isDiffBiggerThenOne(min, max)) {
+    return balance(swapUnits(stringNum, minIndex, maxIndex));
+  }
+  return stringNum;
 };
 
-const getRightAnswer = num => balanceNumber(num).toString();
+const getRightAnswer = num => balance(num).toString();
 
 export const getRules = () => 'Balance the given number.';
 export const getRiddle = () => {
   const num = getRandomInt(MIN_NUMBER, MAX_NUMBER);
-  const correctAnswer = getRightAnswer(num);
+  const correctAnswer = getRightAnswer(num.toString());
   return createRiddle(num, correctAnswer);
 };
 export const start = () => {
