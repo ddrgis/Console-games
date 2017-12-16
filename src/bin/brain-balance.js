@@ -1,5 +1,4 @@
 #!/usr/bin/nodejs
-import { getRules, getRiddle, isRight } from '../games/brain-balance-game';
-import { startGame } from '../engine';
+import { start } from '../games/brain-balance-game';
 
-startGame(getRules, getRiddle, isRight);
+start();
