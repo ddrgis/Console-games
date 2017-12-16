@@ -64,15 +64,13 @@ const balanceNumber = (num) => {
   return sort(balance(num.toString()));
 };
 
-const getQuestion = num => `${num}`;
 const getRightAnswer = num => balanceNumber(num).toString();
 
 export const getRules = () => 'Balance the given number.';
 export const getRiddle = () => {
   const num = getRandomInt(MIN_NUMBER, MAX_NUMBER);
-  const question = getQuestion(num);
   const correctAnswer = getRightAnswer(num);
-  return createRiddle(question, correctAnswer);
+  return createRiddle(num, correctAnswer);
 };
 export const start = () => {
   startGame(getRules, getRiddle);
