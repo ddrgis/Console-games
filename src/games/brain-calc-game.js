@@ -26,19 +26,6 @@ const multiplication = (op1, op2) => {
   return op1 * op2;
 };
 
-const getOperator = (sing) => {
-  switch (sing) {
-    case '+':
-      return plus;
-    case '-':
-      return minus;
-    case '*':
-      return multiplication;
-    default:
-      throw new Error(`Can't create operator from sing "${sing}"'`);
-  }
-};
-
 const getRandomOperatorSign = () => {
   const operatorNumber = getRandomInt(0, 3);
   switch (operatorNumber) {
@@ -59,12 +46,19 @@ const getRightAnswer = (operator, operand1, operand2) => operator(operand1, oper
 export const getRules = () => 'What is the result of the expression?';
 export const getRiddle = () => {
   const sign = getRandomOperatorSign();
-  const operator = getOperator(sign);
   const operand1 = getRandomInt(MIN_NUMBER, MAX_NUMBER);
   const operand2 = getRandomInt(MIN_NUMBER, MAX_NUMBER);
-  const question = getQuestion(sign, operand1, operand2);
-  const correctAnswer = getRightAnswer(operator, operand1, operand2);
-  return createRiddle(question, correctAnswer);
+  const questsion = getQuestion(sign, operand1, operand2);
+  switch (sign) {
+    case '+':
+      return createRiddle(questsion, getRightAnswer(plus, operand1, operand2));
+    case '-':
+      return createRiddle(questsion, getRightAnswer(minus, operand1, operand2));
+    case '*':
+      return createRiddle(questsion, getRightAnswer(multiplication, operand1, operand2));
+    default:
+      throw new Error(`Can't create operator from sing "${sign}"'`);
+  }
 };
 export const start = () => {
   startGame(getRules, getRiddle);
