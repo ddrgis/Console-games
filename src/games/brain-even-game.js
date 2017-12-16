@@ -1,6 +1,5 @@
 import { createRiddle } from '../riddle';
 import getRandomInt from '../prng';
-
 import { startGame } from '../engine';
 
 
@@ -16,7 +15,6 @@ export const getRiddle = () => {
   const correctAnswer = getRightAnswer(question);
   return createRiddle(question, correctAnswer);
 };
-
 export const start = () => {
   startGame(getRules, getRiddle);
 };
