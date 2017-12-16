@@ -21,8 +21,9 @@ const printWrong = (playerName, playerAnswer, correctAnswer) => {
 const congrats = (name) => {
   console.log(`Congratulations, ${name}!`);
 };
+const isRight = (riddle, playerAnswer) => rightAnswer(riddle) === playerAnswer;
 
-export const startGame = (getRules, getRiddle, isRight) => {
+export const startGame = (getRules, getRiddle) => {
   welcome();
   console.log(`${getRules()}\n`);
   const playerName = askName();
