@@ -1,5 +1,5 @@
 import { createRiddle } from '../riddle';
-import getRandomInt from '../prng';
+import getRandomInt from '../random-generator';
 import { startGame } from '../engine';
 
 
