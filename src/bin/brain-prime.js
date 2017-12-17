@@ -1,4 +1,4 @@
 #!/usr/bin/nodejs
-import { start } from '../games/brain-prime-game';
+import { start } from '../games/prime';
 
 start();

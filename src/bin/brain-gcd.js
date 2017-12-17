@@ -1,4 +1,4 @@
 #!/usr/bin/nodejs
-import { start } from '../games/brain-gcd-game';
+import { start } from '../games/gcd';
 
 start();

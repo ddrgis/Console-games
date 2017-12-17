@@ -1,4 +1,4 @@
 #!/usr/bin/nodejs
-import { start } from '../games/brain-progression-game';
+import { start } from '../games/progression';
 
 start();

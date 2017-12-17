@@ -1,4 +1,4 @@
 #!/usr/bin/nodejs
-import { start } from '../games/brain-balance-game';
+import { start } from '../games/balance';
 
 start();
