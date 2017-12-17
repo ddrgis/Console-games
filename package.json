@@ -1,6 +1,6 @@
 {
   "name": "my-minigame-011235",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "project-lvl1-s212",
   "bin": {
     "brain-even": "dist/bin/brain-even.js",
