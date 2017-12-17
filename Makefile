@@ -1,6 +1,15 @@
 install:
 	npm install
 
+install-games:
+	sudo npm install my-minigame-011235 -g
+
+uninstall-games:
+	sudo npm uninstall my-minigame-011235 -g
+
+update-games:
+	sudo npm update my-minigame-011235 -g
+
 even:
 	npm run babel-node -- src/bin/brain-even.js
 
