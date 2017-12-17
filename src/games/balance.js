@@ -6,20 +6,11 @@ const MIN_NUMBER = 10;
 const MAX_NUMBER = 9999;
 
 const sort = n => n.toString().split('').sort().join('');
-
 const isDiffBiggerThenOne =
   (strNum1, strNum2) => Math.abs(parseInt(strNum1, 10) - parseInt(strNum2, 10)) > 1;
 
-const isBalanced = (stringNum) => {
-  for (let i = 0; i < stringNum.length; i += 1) {
-    for (let j = 0; j < stringNum.length; j += 1) {
-      if (isDiffBiggerThenOne(stringNum[i], stringNum[j])) {
-        return false;
-      }
-    }
-  }
-  return true;
-};
+const isBalanced = (strNum, minIndex, maxIndex) =>
+  !isDiffBiggerThenOne(strNum[minIndex], strNum[maxIndex]);
 
 const balance = (stringNum) => {
   const swapUnits = (str, minIndex, maxIndex) => {
@@ -39,10 +30,6 @@ const balance = (stringNum) => {
     return result;
   };
 
-  if (isBalanced(stringNum)) {
-    return sort(stringNum);
-  }
-
   let minIndex = 0;
   let maxIndex = 0;
 
@@ -55,21 +42,16 @@ const balance = (stringNum) => {
     }
   }
 
-  const min = stringNum[minIndex];
-  const max = stringNum[maxIndex];
-
-  if (isDiffBiggerThenOne(min, max)) {
-    return balance(swapUnits(stringNum, minIndex, maxIndex));
+  if (isBalanced(stringNum, minIndex, maxIndex)) {
+    return sort(stringNum);
   }
-  return stringNum;
+  return balance(swapUnits(stringNum, minIndex, maxIndex));
 };
-
-const getRightAnswer = num => balance(num).toString();
 
 export const getRules = () => 'Balance the given number.';
 export const getRiddle = () => {
   const num = getRandomInt(MIN_NUMBER, MAX_NUMBER);
-  const correctAnswer = getRightAnswer(num.toString());
+  const correctAnswer = balance(num.toString()).toString();
   return createRiddle(num, correctAnswer);
 };
 export const start = () => {
